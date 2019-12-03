@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Login Page{% endblock %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+    {% block content %}
+<div style="padding-left: 20px; padding-top: 35px;">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for msg in messages %}
+                    <p>{{msg}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+    <div>
+        <form action="#" method="POST">
+            <p style="display:inline" >username: </p>
+            <p><input type="text" name="username"/></p>
+
+            <p style="display:inline" >password:</p>
+            <p><input type="password" name="password"/></p>
+
+            <p><input type="submit" value="Login"/></p>
+        </form>
+    </div>
+</div>
+{% endblock %}

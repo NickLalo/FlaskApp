@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Upload and Data View{% endblock %}
+
+{% block content %}
+<div style="padding-left: 10px; padding-top: 35px;">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for msg in messages %}
+                    <p>{{msg}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+    <h1>Hello, {{username}} </h1>
+
+    <form action="#" method="post">
+        <div class="form-group">
+            <p><input type="submit" value="Logout" name="Logout"/></p>
+        </div>
+    </form>
+
+    <p> </p>
+    <p> </p>
+
+    <div class="form-group" style="padding-top: 25px; padding-left: 75px;">
+        <form action="#" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <div style="padding-left: 15px;">
+                    <p style="display:inline;">Short Description:</p>
+                    <div style="padding-left: 19px;">
+                        <input type="text" id="description"
+                           name="shortDescription" style="width: 290px;">
+                    </div>
+                </div>
+                <div class="form-group col-md-2" style="padding-left: 34px; display:inline;">
+                    <div id="yourBtn" onclick="getFile()">click to select a file</div>
+                    <!-- this is your file input tag, so i hide it!-->
+                    <!-- i used the onchange event to fire the form submission-->
+                    <div style='height: 0px;width: 0px; overflow:hidden;'><input id="file" name="file" type="file" value="upload" onchange="sub(this)" /></div>
+                    <!-- here you can have file submit button or you can write a simple script to upload the file automatically-->
+                    <!-- <input type="submit" value='submit' > -->
+                </div>
+
+                <div class="form-group col-md-2" style="padding-left: 34px;">
+                    <button type="submit" value="Upload" name="Upload">Upload</button>
+                </div>
+            </div>
+        </form>
+
+        <script>
+        function getFile() {
+      document.getElementById("file").click();
+        }
+
+        function sub(obj) {
+          var file = obj.value;
+          var fileName = file.split("\\");
+          document.getElementById("yourBtn").innerHTML = fileName[fileName.length - 1];
+          event.preventDefault();
+        }
+    </script>
+
+    </div>
+
+    {% if role == "admin" %}
+    <p> </p>
+    <p> </p>
+    <p> </p>
+    <form action="/Download" method="post" style="padding-top: 80px;">
+        <p><input type="submit" value="Download Database" name="Download Database"/></p>
+    </form>
+    <p></p>
+    {% endif %}
+
+    {% for key1, value1 in database.items() %}
+        {% for key2, value2 in value1.items() %}
+            <p style="font-size: 14px;">{{key2}}: {{value2}}</p>
+        {% endfor %}
+    {% endfor %}
+
+    {% endblock %}
+</div>
