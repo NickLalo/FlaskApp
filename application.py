@@ -171,7 +171,7 @@ def DataUpload():
 
                 # mark each file with the username and datetime
                 splitFilename = file.filename.split('.')
-                filename = f"{splitFilename[0]}_{username}_{str(datetime.now()).replace(' ', '_').replace(':', '_').replace('.', '_')}_{splitFilename[1]}"
+                filename = f"{splitFilename[0]}_{username}_{str(datetime.now()).replace(' ', '_').replace(':', '_').replace('.', '_')}.{splitFilename[1]}"
 
             # parse the upload if formatted correctly
                 description = request.form["shortDescription"]
