@@ -32,7 +32,7 @@ def create_new_user(username, role="user"):
     # SETUP FOR DATABASE CONNECTION
     cluster = \
         MongoClient(
-            "mongodb+srv://NickDBA:wHslF2yJ7otystjc@cluster0-blgpv.mongodb.net/test?retryWrites=true&w=majority")
+            "mongodb+srv://NickDBA:passwordGoesHere@cluster0-blgpv.mongodb.net/test?retryWrites=true&w=majority")
     db = cluster["ElasticBeanDB"]  # database name goes here
     collection = db["DataCollection"]
 
