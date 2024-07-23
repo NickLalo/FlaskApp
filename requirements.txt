@@ -7,6 +7,6 @@ itsdangerous==1.1.0
 Jinja2==2.11.3
 MarkupSafe==1.1.1
 pycparser==2.19
-pymongo==3.9.0
+pymongo==4.6.3
 six==1.13.0
 Werkzeug==0.16.0
